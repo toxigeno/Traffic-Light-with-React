@@ -1,40 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Trafficlight = () => {
-	constructor();
-	super();
-	this.state = {
-		clickedLight: null
-	};
-};
+export function Trafficlight() {
+	let [colorLight, setColorLight] = useState("");
 
-let redglow = "";
-if (this.state.clickedLight == "redlight") redglow = "glow";
-let yellowglow = "";
-if (this.state.clickedLight == "yellowlight") redglow = "glow";
-let greenglow = "";
-if (this.state.clickedLight == "greenlight") redglow = "glow";
+	function red() {
+		setColorLight("red");
+	}
+	function yellow() {
+		setColorLight("yellow");
+	}
 
-return (
-	<div>
-		<div id="top"></div>
-		<div id="container">
-			<div
-				className={"light redlight" + "redglow"}
-				onClick={() =>
-					this.setState({ clickedLight: "redlight" })
-				}></div>
-			<div
-				className={"light yellowlight" + "yellowglow"}
-				onClick={() =>
-					this.setState({ clickedLight: "yellowlight" })
-				}></div>
-			<div
-				className={"light greenlight" + "greenglow"}
-				onClick={() =>
-					this.setState({ clickedLight: "greenlight" })
-				}></div>
+	function green() {
+		setColorLight("green");
+	}
+
+	return (
+		<div className="container">
+			<div className="row justify-content-center">
+				<div className="tl-box">
+					<div className="bolster mx-auto"></div>
+					<div className="tl-body p-2">
+						<div
+							onClick={red}
+							className={
+								"red-light" +
+								(colorLight == "red" ? " glow" : "")
+							}></div>
+						<div
+							onClick={yellow}
+							className={
+								"yellow-light" +
+								(colorLight == "yellow" ? " glow" : "")
+							}></div>
+						<div
+							onClick={green}
+							className={
+								"green-light" +
+								(colorLight == "green" ? " glow" : "")
+							}></div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-);
+	);
+}
+
 export default Trafficlight;
